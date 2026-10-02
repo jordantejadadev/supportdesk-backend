@@ -72,7 +72,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String path = request.getServletPath();
 
-        return path.equals("/auth/login")
+        return path.equals("/health") || path.equals("/auth/login")
                 || path.equals("/auth/refresh")
                 || path.equals("/auth/logout")
                 || path.equals("/ws");
