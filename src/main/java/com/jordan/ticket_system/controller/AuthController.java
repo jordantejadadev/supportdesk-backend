@@ -66,19 +66,19 @@ public class AuthController {
         // Cookie access token
         ResponseCookie accessCookie = ResponseCookie.from("jwt", accessToken)
                 .httpOnly(true)
-                .secure(false)
+                .secure(true)
                 .path("/")
                 .maxAge(60 * 15) // 15 minutos
-                .sameSite("Lax")
+                .sameSite("None")
                 .build();
 
         // Cookie refresh token
         ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken.getToken())
                 .httpOnly(true)
-                .secure(false)
+                .secure(true)
                 .path("/")
                 .maxAge(60 * 60 * 24 * 7) // 7 días
-                .sameSite("Lax")
+                .sameSite("None")
                 .build();
 
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
@@ -146,10 +146,10 @@ public class AuthController {
 
         ResponseCookie accessCookie = ResponseCookie.from("jwt", newAccessToken)
                 .httpOnly(true)
-                .secure(false)
+                .secure(true)
                 .path("/")
                 .maxAge(60 * 15)
-                .sameSite("Lax")
+                .sameSite("None")
                 .build();
 
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
